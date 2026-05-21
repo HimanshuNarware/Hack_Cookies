@@ -1,0 +1,19 @@
+{
+  "manifest_version": 3,
+  "name": "Dev Editor",
+  "version": "1.0.0",
+  "description": "Professional developer utility to inspect, edit, create, and delete Local Storage, Session Storage, and Cookies.",
+  "action": {
+    "default_popup": "index.html"
+  },
+  "permissions": [
+    "storage",
+    "cookies",
+    "scripting",
+    "activeTab",
+    "tabs"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ]
+}
