@@ -91,31 +91,31 @@ function App() {
   };
 
   return (
-    <div className="flex flex-col h-screen w-full max-w-[500px] min-w-[450px] mx-auto bg-navy-900 text-gray-100 font-sans relative">
+    <div className="flex flex-col h-screen w-full max-w-[500px] min-w-[450px] mx-auto bg-obsidian-deep text-pure-white font-sans relative">
       {/* Header */}
-      <header className="flex flex-col gap-3 p-4 border-b border-gray-800 bg-navy-800/50 backdrop-blur-sm sticky top-0 z-10">
+      <header className="flex flex-col gap-3 p-4 border-b border-charcoal/50 bg-charcoal/30 backdrop-blur-md sticky top-0 z-10">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
-            <div className="p-1.5 bg-primary-500/20 rounded-lg border border-primary-500/30">
-              <Code2 size={20} className="text-primary-400" />
+            <div className="p-1.5 bg-kinetic-amber/20 rounded-lg border border-kinetic-amber/30">
+              <Code2 size={20} className="text-kinetic-amber" />
             </div>
             <div>
-              <h1 className="text-lg font-bold tracking-tight text-white">Dev Editor</h1>
-              <p className="text-xs text-gray-400 truncate max-w-[200px]">{currentUrl || 'No active page'}</p>
+              <h1 className="text-lg font-black tracking-tight text-pure-white font-sans uppercase">Cookie Crumbs</h1>
+              <p className="text-xs text-gray-400 truncate max-w-[200px] font-mono">{currentUrl || 'No active page'}</p>
             </div>
           </div>
           <div className="flex items-center gap-1">
-            <label className="p-1.5 text-gray-400 hover:text-white hover:bg-navy-700 rounded-md transition-colors cursor-pointer" title="Import JSON">
+            <label className="p-1.5 text-gray-400 hover:text-kinetic-amber hover:bg-charcoal rounded-full transition-colors cursor-pointer" title="Import JSON">
               <Upload size={16} />
               <input type="file" accept=".json" className="hidden" onChange={handleImport} />
             </label>
-            <button onClick={handleExport} className="p-1.5 text-gray-400 hover:text-white hover:bg-navy-700 rounded-md transition-colors" title="Export JSON">
+            <button onClick={handleExport} className="p-1.5 text-gray-400 hover:text-kinetic-amber hover:bg-charcoal rounded-full transition-colors" title="Export JSON">
               <Download size={16} />
             </button>
-            <div className="w-px h-4 bg-gray-700 mx-1"></div>
+            <div className="w-px h-4 bg-charcoal mx-1"></div>
             <button 
               onClick={() => loadData()} 
-              className="p-1.5 text-gray-400 hover:text-white hover:bg-navy-700 rounded-md transition-colors"
+              className="p-1.5 text-gray-400 hover:text-kinetic-amber hover:bg-charcoal rounded-full transition-colors"
               title="Refresh"
             >
               <RefreshCw size={16} className={isLoading ? 'animate-spin' : ''} />
@@ -123,46 +123,37 @@ function App() {
           </div>
         </div>
 
-        {/* Tabs */}
-        <div className="flex p-1 bg-navy-950/50 rounded-lg border border-gray-800">
-          <button onClick={() => setActiveTab('local')} className={`flex-1 flex items-center justify-center gap-2 py-1.5 text-sm font-medium rounded-md transition-all ${activeTab === 'local' ? 'bg-navy-700 text-white shadow-sm border border-gray-600/50' : 'text-gray-400 hover:text-gray-200 hover:bg-navy-800/50'}`}>
-            <HardDrive size={14} /> Local
-          </button>
-          <button onClick={() => setActiveTab('session')} className={`flex-1 flex items-center justify-center gap-2 py-1.5 text-sm font-medium rounded-md transition-all ${activeTab === 'session' ? 'bg-navy-700 text-white shadow-sm border border-gray-600/50' : 'text-gray-400 hover:text-gray-200 hover:bg-navy-800/50'}`}>
-            <Database size={14} /> Session
-          </button>
-          <button onClick={() => setActiveTab('cookies')} className={`flex-1 flex items-center justify-center gap-2 py-1.5 text-sm font-medium rounded-md transition-all ${activeTab === 'cookies' ? 'bg-navy-700 text-white shadow-sm border border-gray-600/50' : 'text-gray-400 hover:text-gray-200 hover:bg-navy-800/50'}`}>
-            <Cookie size={14} /> Cookies
-          </button>
-        </div>
+        {/* Tabs - Now at bottom per spec, removing from here later or keep as top tabs but style? The spec says "Bottom Navigation: Fixed at the bottom with three tabs". Let's move them down. */}
+        {/* Wait, the spec says "Fixed at the bottom". I'll move this block to the bottom. */}
+        {/* I'll remove the tabs from here and add them below main content. */}
 
         {/* Toolbar */}
         <div className="flex gap-2 items-center">
           <div className="relative flex-1">
-            <Search size={14} className="absolute left-2.5 top-1/2 -translate-y-1/2 text-gray-500" />
+            <Search size={14} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500" />
             <input 
               type="text" 
               placeholder="Filter keys..." 
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full bg-navy-950/50 border border-gray-700 rounded-md pl-8 pr-3 py-1.5 text-sm text-gray-200 focus:outline-none focus:ring-1 focus:ring-primary-500 focus:border-primary-500 placeholder-gray-600 transition-all"
+              className="input-field pl-9 pr-3 py-1.5"
             />
           </div>
-          <button onClick={() => setShowAddModal(true)} className="p-1.5 text-gray-400 hover:text-white hover:bg-navy-700 rounded-md border border-gray-700 transition-colors" title="Add New">
+          <button onClick={() => setShowAddModal(true)} className="p-1.5 text-gray-400 hover:text-kinetic-amber hover:bg-charcoal rounded-full border border-charcoal/50 transition-colors" title="Add New">
             <Plus size={16} />
           </button>
-          <button onClick={handleClearAll} className="p-1.5 text-red-400 hover:text-red-300 hover:bg-red-900/20 rounded-md border border-red-900/30 transition-colors" title="Clear All">
+          <button onClick={handleClearAll} className="p-1.5 text-red-400 hover:text-red-300 hover:bg-red-900/20 rounded-full border border-red-900/30 transition-colors" title="Clear All">
             <Trash2 size={16} />
           </button>
         </div>
       </header>
 
       {/* Main Content */}
-      <main className="flex-1 overflow-hidden flex flex-col relative">
+      <main className="flex-1 overflow-hidden flex flex-col relative pb-20">
         {isLoading && (
-          <div className="absolute inset-0 flex items-center justify-center bg-navy-900/50 backdrop-blur-sm z-20">
+          <div className="absolute inset-0 flex items-center justify-center bg-obsidian-deep/80 backdrop-blur-sm z-20">
             <div className="flex flex-col items-center gap-3">
-              <RefreshCw size={24} className="animate-spin text-primary-500" />
+              <RefreshCw size={24} className="animate-spin text-kinetic-amber" />
               <p className="text-sm text-gray-400">Loading data...</p>
             </div>
           </div>
@@ -175,25 +166,40 @@ function App() {
         </div>
       </main>
 
+      {/* Bottom Navigation */}
+      <nav className="absolute bottom-4 left-4 right-4 flex justify-center z-10 pointer-events-none">
+        <div className="flex bg-charcoal p-1.5 rounded-full border border-charcoal/50 shadow-lg pointer-events-auto">
+          <button onClick={() => setActiveTab('cookies')} className={`flex items-center justify-center gap-2 px-5 py-2 text-sm font-bold rounded-full transition-all ${activeTab === 'cookies' ? 'bg-kinetic-amber text-obsidian-deep shadow-[0_0_15px_rgba(255,179,0,0.3)]' : 'text-gray-400 hover:text-pure-white hover:bg-obsidian-deep'}`}>
+            <Cookie size={16} /> Cookies
+          </button>
+          <button onClick={() => setActiveTab('session')} className={`flex items-center justify-center gap-2 px-5 py-2 text-sm font-bold rounded-full transition-all ${activeTab === 'session' ? 'bg-vivid-orange text-obsidian-deep shadow-[0_0_15px_rgba(255,157,51,0.3)]' : 'text-gray-400 hover:text-pure-white hover:bg-obsidian-deep'}`}>
+            <Database size={16} /> Session
+          </button>
+          <button onClick={() => setActiveTab('local')} className={`flex items-center justify-center gap-2 px-5 py-2 text-sm font-bold rounded-full transition-all ${activeTab === 'local' ? 'bg-vivid-orange text-obsidian-deep shadow-[0_0_15px_rgba(255,157,51,0.3)]' : 'text-gray-400 hover:text-pure-white hover:bg-obsidian-deep'}`}>
+            <HardDrive size={16} /> Local
+          </button>
+        </div>
+      </nav>
+
       {/* Add Modal */}
       {showAddModal && (
-        <div className="absolute inset-0 bg-navy-900/80 backdrop-blur-sm z-30 flex items-center justify-center p-4">
-          <div className="glass-panel w-full max-w-sm flex flex-col overflow-hidden">
-            <div className="flex items-center justify-between p-3 border-b border-gray-700">
-              <h3 className="font-medium text-white text-sm">Add New {activeTab === 'cookies' ? 'Cookie' : 'Item'}</h3>
-              <button onClick={() => setShowAddModal(false)} className="text-gray-400 hover:text-white"><X size={16} /></button>
+        <div className="absolute inset-0 bg-obsidian-deep/80 backdrop-blur-sm z-30 flex items-center justify-center p-4">
+          <div className="bg-charcoal rounded-[24px] border border-charcoal/50 shadow-2xl w-full max-w-sm flex flex-col overflow-hidden">
+            <div className="flex items-center justify-between p-4 border-b border-obsidian-deep">
+              <h3 className="font-bold text-pure-white text-sm uppercase tracking-wide">Add New {activeTab === 'cookies' ? 'Cookie' : 'Item'}</h3>
+              <button onClick={() => setShowAddModal(false)} className="text-gray-400 hover:text-kinetic-amber rounded-full p-1 hover:bg-obsidian-deep transition-colors"><X size={16} /></button>
             </div>
-            <div className="p-4 flex flex-col gap-3">
-              <div className="flex flex-col gap-1">
-                <label className="text-xs text-gray-400">Key / Name</label>
-                <input value={newKey} onChange={e => setNewKey(e.target.value)} className="input-field" placeholder="e.g. auth_token" />
+            <div className="p-5 flex flex-col gap-4">
+              <div className="flex flex-col gap-1.5">
+                <label className="text-xs font-bold text-gray-400 uppercase tracking-wider">Key / Name</label>
+                <input value={newKey} onChange={e => setNewKey(e.target.value)} className="input-field font-mono" placeholder="e.g. auth_token" />
               </div>
-              <div className="flex flex-col gap-1">
-                <label className="text-xs text-gray-400">Value</label>
-                <textarea value={newValue} onChange={e => setNewValue(e.target.value)} className="input-field resize-y min-h-[80px]" placeholder="{...}" />
+              <div className="flex flex-col gap-1.5">
+                <label className="text-xs font-bold text-gray-400 uppercase tracking-wider">Value</label>
+                <textarea value={newValue} onChange={e => setNewValue(e.target.value)} className="input-field font-mono resize-y min-h-[80px] rounded-[16px]" placeholder="{...}" />
               </div>
             </div>
-            <div className="p-3 border-t border-gray-700 flex justify-end gap-2 bg-navy-800/50">
+            <div className="p-4 border-t border-obsidian-deep flex justify-end gap-3 bg-charcoal/50">
               <button onClick={() => setShowAddModal(false)} className="btn-secondary">Cancel</button>
               <button onClick={handleAdd} disabled={!newKey} className="btn-primary">Add Item</button>
             </div>
